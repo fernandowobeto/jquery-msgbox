@@ -9,15 +9,11 @@
         <script>
             $(document).ready(function(){
                $('#btn_msg').click(function(){
-                   $.msgbox("Preencha o campo.", {
-                       type: "info"
-                   },function(){
-                       $(':button').focus();
-                   });
-               }); 
+                   $.msgbox('Preencha o campo.');
+               });
             });
         </script>
-        
+
     </head>
     <body>
         <button id="btn_msg">Mensagem</button>

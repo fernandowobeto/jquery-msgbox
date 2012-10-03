@@ -73,7 +73,7 @@ $.fn.shake = function(o){
 }
 
 jQuery.extend({
-  msgbox2:function(m,o){
+  msgbox:function(m,o){
     var defaults = {
       width: 420,
       buttons:{},
