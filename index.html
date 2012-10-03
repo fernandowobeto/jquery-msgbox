@@ -9,7 +9,11 @@
         <script>
             $(document).ready(function(){
                $('#btn_msg').click(function(){
-                   $.msgbox("jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.", {type: "info"});
+                   $.msgbox("Preencha o campo.", {
+                       type: "info"
+                   },function(){
+                       $(':button').focus();
+                   });
                }); 
             });
         </script>
