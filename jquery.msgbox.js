@@ -7,7 +7,13 @@ $.extend( jQuery.easing,
   });
 
 
-$.fn.moveBox = function() {
+$.fn.moveBox = function(o) {
+  var defs = {
+    width: 0,
+    duration: 500
+  }
+  var confs = $.extend(defs,o);
+  
   var size = {
     x: $(window).width(),
     y: $(window).height()
@@ -21,7 +27,7 @@ $.fn.moveBox = function() {
   var x      = 0;
 
   // vertically center
-  y = scroll.x + ((size.x - 420) / 2);
+  y = scroll.x + ((size.x - confs.width) / 2);
 
   x = (scroll.y - height) - 80;
 
@@ -29,7 +35,7 @@ $.fn.moveBox = function() {
     left  : y,
     top   : scroll.y + ((size.y - height) / 2)
   }, {
-    duration  : 500,
+    duration  : confs.duration,
     queue     : false,
     easing    : 'easeOutBack'
   });
@@ -56,15 +62,15 @@ $.fn.shake = function(o){
   for (i=0; i<o; i++){
     e.animate({
       left: l+x
-      }, d, t);
+    }, d, t);
     e.animate({
       left: l-x
-      }, d, t);
+    }, d, t);
   };
 
   e.animate({
     left: l+x
-    }, d, t);
+  }, d, t);
   e.animate({
     left: l
   },   d, t);
@@ -104,7 +110,6 @@ jQuery.extend({
 
     var div_botoes = $('<div>').addClass('jquery-msgbox-buttons');
 
-
     if(!Object.keys(cfg.buttons).length){
       cfg.buttons['Ok'] = function(box){
         box.trigger('close');
@@ -127,10 +132,10 @@ jQuery.extend({
     div_overlay.appendTo('body').fadeIn(200,function(){
       div_msgbox.appendTo('body').css({
         display : 'block',
-        left    : ( ($(document).width() - 420) / 2)
-      }).moveBox();
+        left    : ( ($(document).width() - cfg.width) / 2)
+      }).moveBox({
+        width:cfg.width
+      });
     });
-
-
   }
 })
